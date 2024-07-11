@@ -1,0 +1,4 @@
+name = "retropie::systems::actions::actions"
+reads = []
+writes = ["Game"]
+init_calldata = []

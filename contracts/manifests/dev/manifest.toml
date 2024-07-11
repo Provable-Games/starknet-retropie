@@ -1,0 +1,65 @@
+[world]
+kind = "WorldContract"
+class_hash = "0x3f63cecdc4964acafb921ba2934c6507d1b3c344edb64c2762cf08053169ab9"
+original_class_hash = "0x3f63cecdc4964acafb921ba2934c6507d1b3c344edb64c2762cf08053169ab9"
+abi = "manifests/dev/abis/deployments/dojo_world_world.json"
+address = "0x5c6321e90dbc787d13b8e28df0ddce6456cf7982117d84de7bda2dc47f60d8c"
+transaction_hash = "0x2fc2641ef26e6cc6f2f47fb77099a1c0cdee32949f0bb33e2809983634d7df"
+block_number = 3
+seed = "retropie"
+name = "dojo::world::world"
+
+[world.metadata]
+profile_name = "dev"
+rpc_url = "http://localhost:5050/"
+
+[base]
+kind = "Class"
+class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+original_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+name = "dojo::base::base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x21aafe6d0bcb9be6bee860c9fac48185233996e93b497121a54f703018bfb79"
+class_hash = "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5"
+original_class_hash = "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5"
+base_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
+abi = "manifests/dev/abis/deployments/contracts/retropie_systems_actions_actions.json"
+reads = []
+writes = ["Game"]
+computed = []
+init_calldata = []
+name = "retropie::systems::actions::actions"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1"
+original_class_hash = "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1"
+abi = "manifests/dev/abis/deployments/models/retropie_models_index_game.json"
+name = "retropie::models::index::game"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "short_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "full_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "rom_path"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "owner"
+type = "felt252"
+key = false
