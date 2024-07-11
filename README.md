@@ -25,12 +25,14 @@ Read the full tutorial [here](https://book.dojoengine.org/tutorial/dojo-starter)
 ## Running Locally
 
 #### Terminal one (Make sure this is running)
+
 ```bash
 # Run Katana
 katana --disable-fee --allowed-origins "*"
 ```
 
 #### Terminal two
+
 ```bash
 # Build the example
 sozo build
