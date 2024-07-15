@@ -13,17 +13,31 @@ trait IActions<TContractState> {
     fn register(
         self: @TContractState,
         world: IWorldDispatcher,
-        short_name: felt252,
-        full_name: felt252,
-        rom_path: felt252,
-    ) -> u32;
+        name: felt252,
+        desc: ByteArray,
+        image: ByteArray,
+        rating: u8,
+        releasedate: u64,
+        developer: felt252,
+        publisher: felt252,
+        genre: felt252,
+        players: u8,
+        lastplayed: u64,
+    ) -> u64;
     fn update(
         self: @TContractState,
         world: IWorldDispatcher,
-        game_id: u32,
-        short_name: felt252,
-        full_name: felt252,
-        rom_path: felt252,
+        game_id: u64,
+        name: felt252,
+        desc: ByteArray,
+        image: ByteArray,
+        rating: u8,
+        releasedate: u64,
+        developer: felt252,
+        publisher: felt252,
+        genre: felt252,
+        players: u8,
+        lastplayed: u64,
     );
 }
 
@@ -93,22 +107,65 @@ mod actions {
         fn register(
             self: @ContractState,
             world: IWorldDispatcher,
-            short_name: felt252,
-            full_name: felt252,
-            rom_path: felt252,
-        ) -> u32 {
-            self.registerable.register(world, short_name, full_name, rom_path)
+            name: felt252,
+            desc: ByteArray,
+            image: ByteArray,
+            rating: u8,
+            releasedate: u64,
+            developer: felt252,
+            publisher: felt252,
+            genre: felt252,
+            players: u8,
+            lastplayed: u64,
+        ) -> u64 {
+            self
+                .registerable
+                .register(
+                    world,
+                    name,
+                    desc,
+                    image,
+                    rating,
+                    releasedate,
+                    developer,
+                    publisher,
+                    genre,
+                    players,
+                    lastplayed
+                )
         }
 
         fn update(
             self: @ContractState,
             world: IWorldDispatcher,
-            game_id: u32,
-            short_name: felt252,
-            full_name: felt252,
-            rom_path: felt252,
+            game_id: u64,
+            name: felt252,
+            desc: ByteArray,
+            image: ByteArray,
+            rating: u8,
+            releasedate: u64,
+            developer: felt252,
+            publisher: felt252,
+            genre: felt252,
+            players: u8,
+            lastplayed: u64,
         ) {
-            self.registerable.update(world, game_id, short_name, full_name, rom_path)
+            self
+                .registerable
+                .update(
+                    world,
+                    game_id,
+                    name,
+                    desc,
+                    image,
+                    rating,
+                    releasedate,
+                    developer,
+                    publisher,
+                    genre,
+                    players,
+                    lastplayed
+                )
         }
     }
 }

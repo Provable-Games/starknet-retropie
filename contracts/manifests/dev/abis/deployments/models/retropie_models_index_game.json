@@ -328,19 +328,51 @@
     "members": [
       {
         "name": "id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "desc",
+        "type": "core::byte_array::ByteArray"
+      },
+      {
+        "name": "image",
+        "type": "core::byte_array::ByteArray"
+      },
+      {
+        "name": "rating",
+        "type": "core::integer::u8"
+      },
+      {
+        "name": "releasedate",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "developer",
+        "type": "core::felt252"
+      },
+      {
+        "name": "publisher",
+        "type": "core::felt252"
+      },
+      {
+        "name": "genre",
+        "type": "core::felt252"
+      },
+      {
+        "name": "players",
+        "type": "core::integer::u8"
+      },
+      {
+        "name": "playcount",
         "type": "core::integer::u32"
       },
       {
-        "name": "short_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "full_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "rom_path",
-        "type": "core::felt252"
+        "name": "lastplayed",
+        "type": "core::integer::u64"
       },
       {
         "name": "owner",

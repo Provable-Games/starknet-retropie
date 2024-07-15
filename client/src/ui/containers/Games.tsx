@@ -22,9 +22,9 @@ export const Games = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">#</TableHead>
-            <TableHead>Short Name</TableHead>
-            <TableHead>Full Name</TableHead>
-            <TableHead>ROM Path</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Description</TableHead>
+            <TableHead>Image</TableHead>
             <TableHead> </TableHead>
           </TableRow>
         </TableHeader>
@@ -32,9 +32,9 @@ export const Games = () => {
           {games.map((game) => (
             <TableRow key={game.id}>
               <TableCell>{game.id}</TableCell>
-              <TableCell>{game.shortName}</TableCell>
-              <TableCell>{game.fullName}</TableCell>
-              <TableCell>{game.romPath}</TableCell>
+              <TableCell>{game.name}</TableCell>
+              <TableCell>{game.description}</TableCell>
+              <TableCell>{game.image}</TableCell>
               <TableCell>
                 <Update game={game} />
               </TableCell>

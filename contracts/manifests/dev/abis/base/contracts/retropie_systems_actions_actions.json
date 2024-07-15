@@ -37,6 +37,24 @@
     ]
   },
   {
+    "type": "struct",
+    "name": "core::byte_array::ByteArray",
+    "members": [
+      {
+        "name": "data",
+        "type": "core::array::Array::<core::bytes_31::bytes31>"
+      },
+      {
+        "name": "pending_word",
+        "type": "core::felt252"
+      },
+      {
+        "name": "pending_word_len",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
     "type": "interface",
     "name": "retropie::systems::actions::IActions",
     "items": [
@@ -49,21 +67,49 @@
             "type": "dojo::world::IWorldDispatcher"
           },
           {
-            "name": "short_name",
+            "name": "name",
             "type": "core::felt252"
           },
           {
-            "name": "full_name",
+            "name": "desc",
+            "type": "core::byte_array::ByteArray"
+          },
+          {
+            "name": "image",
+            "type": "core::byte_array::ByteArray"
+          },
+          {
+            "name": "rating",
+            "type": "core::integer::u8"
+          },
+          {
+            "name": "releasedate",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "developer",
             "type": "core::felt252"
           },
           {
-            "name": "rom_path",
+            "name": "publisher",
             "type": "core::felt252"
+          },
+          {
+            "name": "genre",
+            "type": "core::felt252"
+          },
+          {
+            "name": "players",
+            "type": "core::integer::u8"
+          },
+          {
+            "name": "lastplayed",
+            "type": "core::integer::u64"
           }
         ],
         "outputs": [
           {
-            "type": "core::integer::u32"
+            "type": "core::integer::u64"
           }
         ],
         "state_mutability": "view"
@@ -78,19 +124,47 @@
           },
           {
             "name": "game_id",
-            "type": "core::integer::u32"
+            "type": "core::integer::u64"
           },
           {
-            "name": "short_name",
+            "name": "name",
             "type": "core::felt252"
           },
           {
-            "name": "full_name",
+            "name": "desc",
+            "type": "core::byte_array::ByteArray"
+          },
+          {
+            "name": "image",
+            "type": "core::byte_array::ByteArray"
+          },
+          {
+            "name": "rating",
+            "type": "core::integer::u8"
+          },
+          {
+            "name": "releasedate",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "developer",
             "type": "core::felt252"
           },
           {
-            "name": "rom_path",
+            "name": "publisher",
             "type": "core::felt252"
+          },
+          {
+            "name": "genre",
+            "type": "core::felt252"
+          },
+          {
+            "name": "players",
+            "type": "core::integer::u8"
+          },
+          {
+            "name": "lastplayed",
+            "type": "core::integer::u64"
           }
         ],
         "outputs": [],

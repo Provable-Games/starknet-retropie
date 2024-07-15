@@ -1,27 +1,67 @@
 kind = "DojoModel"
-class_hash = "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1"
-original_class_hash = "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1"
+class_hash = "0x605ca3a20537853b1ecf5a3309154f2d25c5a087c6a3db98a811f21ad9e051d"
+original_class_hash = "0x605ca3a20537853b1ecf5a3309154f2d25c5a087c6a3db98a811f21ad9e051d"
 abi = "manifests/dev/abis/base/models/retropie_models_index_game.json"
 name = "retropie::models::index::game"
 
 [[members]]
 name = "id"
-type = "u32"
+type = "u64"
 key = true
 
 [[members]]
-name = "short_name"
+name = "name"
 type = "felt252"
 key = false
 
 [[members]]
-name = "full_name"
+name = "desc"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "image"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "rating"
+type = "u8"
+key = false
+
+[[members]]
+name = "releasedate"
+type = "u64"
+key = false
+
+[[members]]
+name = "developer"
 type = "felt252"
 key = false
 
 [[members]]
-name = "rom_path"
+name = "publisher"
 type = "felt252"
+key = false
+
+[[members]]
+name = "genre"
+type = "felt252"
+key = false
+
+[[members]]
+name = "players"
+type = "u8"
+key = false
+
+[[members]]
+name = "playcount"
+type = "u32"
+key = false
+
+[[members]]
+name = "lastplayed"
+type = "u64"
 key = false
 
 [[members]]

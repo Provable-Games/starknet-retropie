@@ -36,17 +36,37 @@ mod RegisterableComponent {
         fn register(
             self: @ComponentState<TContractState>,
             world: IWorldDispatcher,
-            short_name: felt252,
-            full_name: felt252,
-            rom_path: felt252,
-        ) -> u32 {
+            name: felt252,
+            desc: ByteArray,
+            image: ByteArray,
+            rating: u8,
+            releasedate: u64,
+            developer: felt252,
+            publisher: felt252,
+            genre: felt252,
+            players: u8,
+            lastplayed: u64,
+        ) -> u64 {
             // [Setup] Datastore
             let store: Store = StoreImpl::new(world);
 
             // [Effect] Create game
             let owner: felt252 = get_caller_address().into();
-            let game_id: u32 = world.uuid() + 1;
-            let game = GameTrait::new(game_id, short_name, full_name, rom_path, owner);
+            let game_id: u64 = world.uuid().into() + 1;
+            let game = GameTrait::new(
+                game_id,
+                name,
+                desc,
+                image,
+                rating,
+                releasedate,
+                developer,
+                publisher,
+                genre,
+                players,
+                lastplayed,
+                owner
+            );
             store.set_game(game);
 
             // [Return] Game id
@@ -56,24 +76,43 @@ mod RegisterableComponent {
         fn update(
             self: @ComponentState<TContractState>,
             world: IWorldDispatcher,
-            game_id: u32,
-            short_name: felt252,
-            full_name: felt252,
-            rom_path: felt252,
+            game_id: u64,
+            name: felt252,
+            desc: ByteArray,
+            image: ByteArray,
+            rating: u8,
+            releasedate: u64,
+            developer: felt252,
+            publisher: felt252,
+            genre: felt252,
+            players: u8,
+            lastplayed: u64,
         ) {
             // [Setup] Datastore
             let store: Store = StoreImpl::new(world);
 
             // [Check] Game exists
             let mut game = store.game(game_id);
-            game.assert_exists();
+            game.clone().assert_exists();
 
             // [Check] Caller is the owner
             let caller: felt252 = get_caller_address().into();
-            game.assert_is_owner(caller);
+            game.clone().assert_is_owner(caller);
 
             // [Effect] Update game
-            game.update(short_name, full_name, rom_path);
+            game
+                .update(
+                    name,
+                    desc: desc.clone(),
+                    image: image.clone(),
+                    rating: rating,
+                    releasedate: releasedate,
+                    developer: developer,
+                    publisher: publisher,
+                    genre: genre,
+                    players: players,
+                    lastplayed: lastplayed
+                );
             store.set_game(game);
         }
     }

@@ -2,23 +2,37 @@
 
 import { DojoProvider } from "@dojoengine/core";
 import { Config } from "../../../dojo.config.ts";
-import { Account, UniversalDetails, shortString } from "starknet";
+import { Account, UniversalDetails, shortString, byteArray } from "starknet";
 
 export interface Signer {
   account: Account;
 }
 
 export interface Register extends Signer {
-  shortName: string;
-  fullName: string;
-  romPath: string;
+  name: string;
+  description: string;
+  image: string;
+  rating: number;
+  releaseDate: number;
+  developer: string;
+  publisher: string;
+  genre: string;
+  players: number;
+  lastPlayed: number;
 }
 
 export interface Update extends Signer {
   gameId: number;
-  shortName: string;
-  fullName: string;
-  romPath: string;
+  name: string;
+  description: string;
+  image: string;
+  rating: number;
+  releaseDate: number;
+  developer: string;
+  publisher: string;
+  genre: string;
+  players: number;
+  lastPlayed: number;
 }
 
 export type IWorld = Awaited<ReturnType<typeof setupWorld>>;
@@ -48,9 +62,16 @@ export async function setupWorld(provider: DojoProvider, config: Config) {
 
     const register = async ({
       account,
-      shortName,
-      fullName,
-      romPath,
+      name,
+      description,
+      image,
+      rating,
+      releaseDate,
+      developer,
+      publisher,
+      genre,
+      players,
+      lastPlayed,
     }: Register) => {
       try {
         return await provider.execute(
@@ -60,9 +81,16 @@ export async function setupWorld(provider: DojoProvider, config: Config) {
             entrypoint: "register",
             calldata: [
               provider.getWorldAddress(),
-              shortString.encodeShortString(shortName),
-              shortString.encodeShortString(fullName),
-              shortString.encodeShortString(romPath),
+              shortString.encodeShortString(name),
+              byteArray.byteArrayFromString(description),
+              byteArray.byteArrayFromString(image),
+              rating,
+              releaseDate,
+              shortString.encodeShortString(developer),
+              shortString.encodeShortString(publisher),
+              shortString.encodeShortString(genre),
+              players,
+              lastPlayed,
             ],
           },
           details,
@@ -76,9 +104,16 @@ export async function setupWorld(provider: DojoProvider, config: Config) {
     const update = async ({
       account,
       gameId,
-      shortName,
-      fullName,
-      romPath,
+      name,
+      description,
+      image,
+      rating,
+      releaseDate,
+      developer,
+      publisher,
+      genre,
+      players,
+      lastPlayed,
     }: Update) => {
       try {
         return await provider.execute(
@@ -89,9 +124,16 @@ export async function setupWorld(provider: DojoProvider, config: Config) {
             calldata: [
               provider.getWorldAddress(),
               gameId,
-              shortString.encodeShortString(shortName),
-              shortString.encodeShortString(fullName),
-              shortString.encodeShortString(romPath),
+              shortString.encodeShortString(name),
+              description,
+              image,
+              rating,
+              releaseDate,
+              shortString.encodeShortString(developer),
+              shortString.encodeShortString(publisher),
+              shortString.encodeShortString(genre),
+              players,
+              lastPlayed,
             ],
           },
           details,

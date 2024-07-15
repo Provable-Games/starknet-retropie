@@ -1020,8 +1020,8 @@
     {
       "kind": "DojoContract",
       "address": "0x21aafe6d0bcb9be6bee860c9fac48185233996e93b497121a54f703018bfb79",
-      "class_hash": "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5",
-      "original_class_hash": "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5",
+      "class_hash": "0x3a50b94a0549273131de07e2be58efd605f75145a1776d0131ea9cde9563352",
+      "original_class_hash": "0x3a50b94a0549273131de07e2be58efd605f75145a1776d0131ea9cde9563352",
       "base_class_hash": "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46",
       "abi": [
         {
@@ -1062,6 +1062,24 @@
           ]
         },
         {
+          "type": "struct",
+          "name": "core::byte_array::ByteArray",
+          "members": [
+            {
+              "name": "data",
+              "type": "core::array::Array::<core::bytes_31::bytes31>"
+            },
+            {
+              "name": "pending_word",
+              "type": "core::felt252"
+            },
+            {
+              "name": "pending_word_len",
+              "type": "core::integer::u32"
+            }
+          ]
+        },
+        {
           "type": "interface",
           "name": "retropie::systems::actions::IActions",
           "items": [
@@ -1074,21 +1092,49 @@
                   "type": "dojo::world::IWorldDispatcher"
                 },
                 {
-                  "name": "short_name",
+                  "name": "name",
                   "type": "core::felt252"
                 },
                 {
-                  "name": "full_name",
+                  "name": "desc",
+                  "type": "core::byte_array::ByteArray"
+                },
+                {
+                  "name": "image",
+                  "type": "core::byte_array::ByteArray"
+                },
+                {
+                  "name": "rating",
+                  "type": "core::integer::u8"
+                },
+                {
+                  "name": "releasedate",
+                  "type": "core::integer::u64"
+                },
+                {
+                  "name": "developer",
                   "type": "core::felt252"
                 },
                 {
-                  "name": "rom_path",
+                  "name": "publisher",
                   "type": "core::felt252"
+                },
+                {
+                  "name": "genre",
+                  "type": "core::felt252"
+                },
+                {
+                  "name": "players",
+                  "type": "core::integer::u8"
+                },
+                {
+                  "name": "lastplayed",
+                  "type": "core::integer::u64"
                 }
               ],
               "outputs": [
                 {
-                  "type": "core::integer::u32"
+                  "type": "core::integer::u64"
                 }
               ],
               "state_mutability": "view"
@@ -1103,19 +1149,47 @@
                 },
                 {
                   "name": "game_id",
-                  "type": "core::integer::u32"
+                  "type": "core::integer::u64"
                 },
                 {
-                  "name": "short_name",
+                  "name": "name",
                   "type": "core::felt252"
                 },
                 {
-                  "name": "full_name",
+                  "name": "desc",
+                  "type": "core::byte_array::ByteArray"
+                },
+                {
+                  "name": "image",
+                  "type": "core::byte_array::ByteArray"
+                },
+                {
+                  "name": "rating",
+                  "type": "core::integer::u8"
+                },
+                {
+                  "name": "releasedate",
+                  "type": "core::integer::u64"
+                },
+                {
+                  "name": "developer",
                   "type": "core::felt252"
                 },
                 {
-                  "name": "rom_path",
+                  "name": "publisher",
                   "type": "core::felt252"
+                },
+                {
+                  "name": "genre",
+                  "type": "core::felt252"
+                },
+                {
+                  "name": "players",
+                  "type": "core::integer::u8"
+                },
+                {
+                  "name": "lastplayed",
+                  "type": "core::integer::u64"
                 }
               ],
               "outputs": [],
@@ -1208,22 +1282,62 @@
       "members": [
         {
           "name": "id",
-          "type": "u32",
+          "type": "u64",
           "key": true
         },
         {
-          "name": "short_name",
+          "name": "name",
           "type": "felt252",
           "key": false
         },
         {
-          "name": "full_name",
+          "name": "desc",
+          "type": "ByteArray",
+          "key": false
+        },
+        {
+          "name": "image",
+          "type": "ByteArray",
+          "key": false
+        },
+        {
+          "name": "rating",
+          "type": "u8",
+          "key": false
+        },
+        {
+          "name": "releasedate",
+          "type": "u64",
+          "key": false
+        },
+        {
+          "name": "developer",
           "type": "felt252",
           "key": false
         },
         {
-          "name": "rom_path",
+          "name": "publisher",
           "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "genre",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "players",
+          "type": "u8",
+          "key": false
+        },
+        {
+          "name": "playcount",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "lastplayed",
+          "type": "u64",
           "key": false
         },
         {
@@ -1232,8 +1346,8 @@
           "key": false
         }
       ],
-      "class_hash": "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1",
-      "original_class_hash": "0x501474f5ea92fb1696ca5bc715cbd5961c86e3b0ca1b2ccc6c22750f9d362d1",
+      "class_hash": "0x605ca3a20537853b1ecf5a3309154f2d25c5a087c6a3db98a811f21ad9e051d",
+      "original_class_hash": "0x605ca3a20537853b1ecf5a3309154f2d25c5a087c6a3db98a811f21ad9e051d",
       "abi": [
         {
           "type": "impl",
@@ -1564,19 +1678,51 @@
           "members": [
             {
               "name": "id",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "desc",
+              "type": "core::byte_array::ByteArray"
+            },
+            {
+              "name": "image",
+              "type": "core::byte_array::ByteArray"
+            },
+            {
+              "name": "rating",
+              "type": "core::integer::u8"
+            },
+            {
+              "name": "releasedate",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "developer",
+              "type": "core::felt252"
+            },
+            {
+              "name": "publisher",
+              "type": "core::felt252"
+            },
+            {
+              "name": "genre",
+              "type": "core::felt252"
+            },
+            {
+              "name": "players",
+              "type": "core::integer::u8"
+            },
+            {
+              "name": "playcount",
               "type": "core::integer::u32"
             },
             {
-              "name": "short_name",
-              "type": "core::felt252"
-            },
-            {
-              "name": "full_name",
-              "type": "core::felt252"
-            },
-            {
-              "name": "rom_path",
-              "type": "core::felt252"
+              "name": "lastplayed",
+              "type": "core::integer::u64"
             },
             {
               "name": "owner",

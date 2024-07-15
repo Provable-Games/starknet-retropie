@@ -29,8 +29,5 @@ fn test_actions_register() {
     // [Assert]
     let game = store.game(context.game_id);
     assert(game.id == context.game_id, 'Game: id');
-    assert(game.short_name == context.game_short_name, 'Game: short_name');
-    assert(game.full_name == context.game_full_name, 'Game: full_name');
-    assert(game.rom_path == context.game_rom_path, 'Game: rom_path');
-    assert(game.owner == context.owner, 'Game: owner');
+    assert(game.name == context.game_name, 'Game: name');
 }

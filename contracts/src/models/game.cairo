@@ -15,35 +15,81 @@ mod errors {
 impl GameImpl of GameTrait {
     #[inline(always)]
     fn new(
-        id: u32, short_name: felt252, full_name: felt252, rom_path: felt252, owner: felt252
+        id: u64,
+        name: felt252,
+        desc: ByteArray,
+        image: ByteArray,
+        rating: u8,
+        releasedate: u64,
+        developer: felt252,
+        publisher: felt252,
+        genre: felt252,
+        players: u8,
+        lastplayed: u64,
+        owner: felt252,
     ) -> Game {
         // [Check] Inputs
-        GameAssert::assert_is_valid(short_name);
-        GameAssert::assert_is_valid(full_name);
-        GameAssert::assert_is_valid(rom_path);
+        GameAssert::assert_is_valid(name);
+        GameAssert::assert_is_valid(developer);
+        GameAssert::assert_is_valid(publisher);
+        GameAssert::assert_is_valid(genre);
         GameAssert::assert_is_valid(owner);
         // [Effect] Create game
-        Game { id, short_name, full_name, rom_path, owner, }
+        Game {
+            id,
+            name,
+            desc,
+            image,
+            rating,
+            releasedate,
+            developer,
+            publisher,
+            genre,
+            players,
+            playcount: 0,
+            lastplayed,
+            owner
+        }
     }
 
     #[inline(always)]
-    fn update(ref self: Game, short_name: felt252, full_name: felt252, rom_path: felt252) {
+    fn update(
+        ref self: Game,
+        name: felt252,
+        desc: ByteArray,
+        image: ByteArray,
+        rating: u8,
+        releasedate: u64,
+        developer: felt252,
+        publisher: felt252,
+        genre: felt252,
+        players: u8,
+        lastplayed: u64,
+    ) {
         // [Check] Inputs
-        GameAssert::assert_is_valid(short_name);
-        GameAssert::assert_is_valid(full_name);
-        GameAssert::assert_is_valid(rom_path);
+        GameAssert::assert_is_valid(name);
+        GameAssert::assert_is_valid(developer);
+        GameAssert::assert_is_valid(publisher);
+        GameAssert::assert_is_valid(genre);
         // [Effect] Update game
-        self.short_name = short_name;
-        self.full_name = full_name;
-        self.rom_path = rom_path;
+        self.name = name;
+        self.desc = desc;
+        self.image = image;
+        self.rating = rating;
+        self.releasedate = releasedate;
+        self.developer = developer;
+        self.publisher = publisher;
+        self.genre = genre;
+        self.players = players;
+        self.lastplayed = lastplayed;
     }
 }
 
 #[generate_trait]
 impl GameAssert of AssertTrait {
     #[inline(always)]
-    fn assert_is_valid(name: felt252) {
-        assert(name != 0, errors::GAME_INVALID_INPUT);
+    fn assert_is_valid(felt: felt252) {
+        assert(felt != 0, errors::GAME_INVALID_INPUT);
     }
 
     #[inline(always)]
@@ -60,7 +106,21 @@ impl GameAssert of AssertTrait {
 impl GameZeroable of core::zeroable::Zeroable<Game> {
     #[inline(always)]
     fn zero() -> Game {
-        Game { id: 0, short_name: 0, full_name: 0, rom_path: 0, owner: 0, }
+        Game {
+            id: 0,
+            name: 0,
+            desc: "",
+            image: "",
+            rating: 0,
+            releasedate: 0,
+            developer: 0,
+            publisher: 0,
+            genre: 0,
+            players: 0,
+            playcount: 0,
+            lastplayed: 0,
+            owner: 0
+        }
     }
 
     #[inline(always)]

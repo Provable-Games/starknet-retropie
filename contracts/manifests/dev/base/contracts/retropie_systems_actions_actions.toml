@@ -1,6 +1,6 @@
 kind = "DojoContract"
-class_hash = "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5"
-original_class_hash = "0x7503523c5e183cd42655ee301fe662974dd0c501b52fac32d1cfe7a6ad70cd5"
+class_hash = "0x3a50b94a0549273131de07e2be58efd605f75145a1776d0131ea9cde9563352"
+original_class_hash = "0x3a50b94a0549273131de07e2be58efd605f75145a1776d0131ea9cde9563352"
 base_class_hash = "0x0"
 abi = "manifests/dev/abis/base/contracts/retropie_systems_actions_actions.json"
 reads = []
